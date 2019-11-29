@@ -141,19 +141,25 @@
     long total = 0;
     switch (option) {
         case 0:
-            result(resultCollection);
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                result(resultCollection);
+            });
             break;
         case 1:
             for (id key in resultCollection) {
                 total += [[resultCollection objectForKey:key] longValue];
             }
-            result([NSNumber numberWithLong:total]);
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                result([NSNumber numberWithLong:total]);
+            });
             break;
         case 2:
             for (id key in resultCollection) {
                 total += [[resultCollection objectForKey:key] longValue];
             }
-            result([NSNumber numberWithLong:total]);
+            dispatch_async(dispatch_get_main_queue(), ^ {
+                result([NSNumber numberWithLong:total]);
+            });
             break;
         default:
             break;
